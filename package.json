@@ -1,0 +1,7 @@
+{
+  "name": "SSR",
+  "version": "1.0.0",
+  "dependencies": {
+    "@angular/cli": "^15.1.2"
+  }
+}
