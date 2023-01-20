@@ -5,5 +5,4 @@ import { Component } from "@angular/core";
     templateUrl: './goblin.component.html'
 })
 export class GoblinComponent {
-
 }

@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "@angular/cli": "^15.1.2"
+  },
+  "devDependencies": {
+    "static-server": "^2.2.1"
   }
 }

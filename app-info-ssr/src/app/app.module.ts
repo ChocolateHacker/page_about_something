@@ -6,6 +6,7 @@ import { MainComponent } from "./pages/main-page/main.component";
 import { AboutComponent } from "./pages/about-page/about.component";
 import { GoblinComponent } from "./pages/goblin-page/goblin.component";
 import { StoryComponent } from "./pages/story-page/story.component";
+import { CommonModule } from "@angular/common";
 
 const routes: Routes = [
     {
@@ -40,14 +41,12 @@ const routes: Routes = [
         StoryComponent
     ],
     imports: [
+        CommonModule,
         BrowserModule,
         RouterOutlet,
         RouterModule.forRoot(routes),
     ],
-    providers: [],
-    bootstrap: [
-        AppComponent
-    ]
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
