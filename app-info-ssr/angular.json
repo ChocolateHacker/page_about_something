@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/app-info-ssr",
+                        "outputPath": "dist/app-info-ssr/browser",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": [
@@ -97,6 +97,60 @@
                         ],
                         "scripts": []
                     }
+                },
+                "server": {
+                  "builder": "@angular-devkit/build-angular:server",
+                  "options": {
+                    "outputPath": "dist/app-info-ssr/server",
+                    "main": "server.ts",
+                    "tsConfig": "tsconfig.server.json",
+                    "inlineStyleLanguage": "scss"
+                  },
+                  "configurations": {
+                    "production": {
+                      "outputHashing": "media"
+                    },
+                    "development": {
+                      "optimization": false,
+                      "sourceMap": true,
+                      "extractLicenses": false,
+                      "vendorChunk": true
+                    }
+                  },
+                  "defaultConfiguration": "production"
+                },
+                "serve-ssr": {
+                  "builder": "@nguniversal/builders:ssr-dev-server",
+                  "configurations": {
+                    "development": {
+                      "browserTarget": "app-info-ssr:build:development",
+                      "serverTarget": "app-info-ssr:server:development"
+                    },
+                    "production": {
+                      "browserTarget": "app-info-ssr:build:production",
+                      "serverTarget": "app-info-ssr:server:production"
+                    }
+                  },
+                  "defaultConfiguration": "development"
+                },
+                "prerender": {
+                  "builder": "@nguniversal/builders:prerender",
+                  "options": {
+                    "routes": [
+                      "/"
+                    ]
+                  },
+                  "configurations": {
+                    "production": {
+                      "browserTarget": "app-info-ssr:build:production",
+                      "serverTarget": "app-info-ssr:server:production"
+                    },
+                    "development": {
+                      "browserTarget": "app-info-ssr:build:development",
+                      "serverTarget": "app-info-ssr:server:development"
+                    }
+                  },
+                  "defaultConfiguration": "production"
                 }
             }
         }

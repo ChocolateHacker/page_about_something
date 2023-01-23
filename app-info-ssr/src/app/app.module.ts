@@ -42,9 +42,9 @@ const routes: Routes = [
     ],
     imports: [
         CommonModule,
-        BrowserModule,
+        BrowserModule.withServerTransition({appId: 'serverApp'}),
         RouterOutlet,
-        RouterModule.forRoot(routes),
+        RouterModule.forRoot(routes, {initialNavigation: 'enabledBlocking'}),
     ],
     bootstrap: [AppComponent]
 })
